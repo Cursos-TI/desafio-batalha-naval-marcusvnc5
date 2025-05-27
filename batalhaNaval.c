@@ -10,6 +10,54 @@ int main() {
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
+    printf("Desafio Batalha Naval - MateCheck\n");
+        printf("Tabuleiro de Batalha Naval\n");
+
+    //Letra das Colunas
+    char colunas [10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+
+    //Inicializa tabuleiro com 0 (mar)
+    int tabuleiro [10][10] = {0};
+
+    //Posicionar navio horizontal (3 partes) na linha 2 (Índice 1), colunas B a D (Índices 1 a 3)
+    for(int i = 1; i <= 3; i++) {
+        tabuleiro[1][i] = 3;
+    }
+
+    //Posicionar novo navio vertical (3 partes) na coluna H (Índice 7), linhas 5 a 7 (Índice 4 a 6) 
+    for(int i = 4; i <= 6; i++) {
+        tabuleiro[i][7] = 3;
+    }
+
+    //Exibir cabeçalho com letras das Colunas
+    printf("   ");
+    for(int i = 0; i < 10; i++) {
+        printf(" %c", colunas[i]);
+    }
+    printf("\n");
+
+    //Exibir tabuleiro com números das linhas
+    for(int i = 0; i < 10; i++) {
+        printf("%2d ", i + 1); //Números de 1 a 10
+        for(int j = 0; j < 10; j++) {
+            printf(" %d", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+
+    //Exibir coordenadas dos navios
+    printf("\nCoordenadas do Navio Horizontal: ");
+    for(int i = 1; i <= 3; i++) {
+        printf("B%d ", i + 1);
+    }
+
+    printf("\nCoordenadas do Navio Vertical: ");
+    for(int i = 4; i <= 6; i++) {
+        printf("%c5 ", colunas[7]); //H5, H6, H7
+    }
+
+    printf("\n");
+
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
