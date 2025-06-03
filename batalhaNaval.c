@@ -1,14 +1,13 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+#define TAM 7
 
-int main() {
     // Nível Novato - Posicionamento dos Navios
     // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+
+int main(){
 
     printf("Desafio Batalha Naval - MateCheck\n");
         printf("Tabuleiro de Batalha Naval\n");
@@ -55,26 +54,73 @@ int main() {
         printf("\n");
     }
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    printf("\n");
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+    int cone[TAM][TAM] = {0};
+    int centro = TAM / 2;
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    // Preencher o cone com topo em cima e base expandindo para baixo
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            if (j >= centro - i && j <= centro + i) {
+                cone[i][j] = 1;
+            }
+        }
+    }
+
+    printf("Habilidade em CONE:\n");
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            printf("%d ", cone[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n");
+
+    int cruz[TAM][TAM] = {0};
+
+    // Preencher cruz com origem no centro
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            if (i == centro || j == centro) {
+                cruz[i][j] = 1;
+            }
+        }
+    }
+
+    printf("\nHabilidade em CRUZ:\n");
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            printf("%d ", cruz[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\n");
+
+    int losango[TAM][TAM] = {0};
+
+
+    // Preencher losango com origem no centro
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            int dist_i = (i >= centro) ? i - centro : centro - i;
+            int dist_j = (j >= centro) ? j - centro : centro - j;
+
+            if ((dist_i + dist_j) <= centro) {
+                losango[i][j] = 1;
+            }
+        }
+    }
+
+    printf("Habilidade em LOSANGO:\n");
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            printf("%d ", losango[i][j]);
+        }
+        printf("\n");
+    }
 
     return 0;
 }
